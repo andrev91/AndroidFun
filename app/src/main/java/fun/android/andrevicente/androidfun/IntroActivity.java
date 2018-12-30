@@ -1,14 +1,5 @@
 package fun.android.andrevicente.androidfun;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,17 +7,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.TextView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 public class IntroActivity extends AppCompatActivity {
 
     /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
+     * The {@link PagerAdapter} that will provide
      * fragments for each of the sections. We use a
      * {@link FragmentPagerAdapter} derivative, which will keep every
      * loaded fragment in memory. If this becomes too memory intensive, it
      * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
+     * {@link FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 

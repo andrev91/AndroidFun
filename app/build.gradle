@@ -1,10 +1,13 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "fun.android.andrevicente.androidfun"
-        minSdkVersion 23
+        minSdkVersion rootProject.minSdkVersion
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -16,14 +19,44 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-compat:28.0.0'
 }
 
 dependencies {
+    kapt "androidx.room:room-compiler:$rootProject.roomVersion"
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0-alpha3'
-    implementation 'com.android.support:design:28.0.0-alpha3'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation 'org.json:json:20180130'
+    androidTestImplementation "androidx.test.ext:junit:1.1.0"
+    androidTestImplementation 'androidx.test:rules:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation 'androidx.multidex:multidex:2.0.1'
+    implementation "android.arch.work:work-runtime-ktx:$rootProject.workVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.core:core-ktx:$rootProject.ktxVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.room:room-runtime:$rootProject.roomVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$rootProject.kotlinVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$rootProject.coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$rootProject.coroutinesVersion"
+
+    def lifecycle_version = "2.0.0"
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 }
