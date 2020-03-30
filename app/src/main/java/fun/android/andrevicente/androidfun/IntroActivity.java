@@ -15,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 public class IntroActivity extends AppCompatActivity {
@@ -137,5 +139,20 @@ public class IntroActivity extends AppCompatActivity {
             // Show 3 total pages.
             return 3;
         }
+
+        //Binance API Hook Example
+//        BinanceApiAsyncRestClientImpl client = new BinanceApiAsyncRestClientImpl("BLAH",
+//                "Hiding for screen sharing purposes");
+//
+//        client.getPrice("BTCUSDT", new BinanceApiCallback<TickerPrice>() {
+//            @Override
+//            public void onResponse(TickerPrice tickerPrice) {
+//                System.out.println("BTC Price is: " + tickerPrice.getPrice());
+//            }
+//            @Override
+//            public void onFailure(Throwable cause) {
+//                cause.printStackTrace();
+//            }
+//        });
     }
 }

@@ -1,8 +1,5 @@
 package fun.android.andrevicente.androidfun;
 
-import com.binance.api.client.BinanceApiCallback;
-import com.binance.api.client.domain.market.TickerPrice;
-import com.binance.api.client.impl.BinanceApiAsyncRestClientImpl;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -14,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -27,20 +24,6 @@ public class ExampleUnitTest {
 
     @Test
     public void addition_isCorrect() {
-        BinanceApiAsyncRestClientImpl client = new BinanceApiAsyncRestClientImpl("BLAH",
-                "Hiding for screen sharing purposes");
-
-        client.getPrice("BTCUSDT", new BinanceApiCallback<TickerPrice>() {
-            @Override
-            public void onResponse(TickerPrice tickerPrice) {
-                System.out.println("BTC Price is: " + tickerPrice.getPrice());
-            }
-            @Override
-            public void onFailure(Throwable cause) {
-                cause.printStackTrace();
-            }
-        });
-
         JSONObject jsonObject = new JSONObject();
         String s = "[" +
                 "{\"country\":\"UA\",\"name\":\"Hurzuf\",\"_id\":707860,\"coord\":{\"lon\":34.283333,\"lat\":44.549999}}," +
