@@ -1,8 +1,6 @@
-package fun.android.andrevicente.androidfun;
-
+package fun.android.andrevicente.androidfun.models;
 
 import com.google.gson.annotations.SerializedName;
-
 import androidx.annotation.NonNull;
 
 public class City implements Comparable {
@@ -28,9 +26,9 @@ public class City implements Comparable {
     }
 
     /**
-     * Coordinates class allows Gson to serialize the coordinates.
+     * Coordinates class allows GSON to serialize the coordinates.
      */
-    public class Coordinates {
+    public static class Coordinates {
         @SerializedName("lat")
         public double mLatitude;
         @SerializedName("lon")
