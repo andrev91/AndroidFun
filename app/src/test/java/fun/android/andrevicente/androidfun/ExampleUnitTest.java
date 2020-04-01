@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.junit.Assert;
+import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,9 +37,10 @@ public class ExampleUnitTest {
         mCitiesTree = new TreeSet<>();
 
         try {
-            JSONArray testing = loadJsonData();
-            for (int i = 0; i < testing.length(); i++) {
-                City tempCity = new Gson().fromJson(testing.get(i).toString(), City.class);
+            JSONArray cityData = loadJsonData();
+            if (cityData == null) Assume.assumeNoException(new DataNotFoundException("Unable to retrieve data!"));
+            for (int i = 0; i < cityData.length(); i++) {
+                City tempCity = new Gson().fromJson(cityData.get(i).toString(), City.class);
                 mCitiesTree.add(tempCity);
             }
         } catch (JSONException e) {
@@ -58,7 +60,7 @@ public class ExampleUnitTest {
 
             json = new String(buffer, StandardCharsets.UTF_8);
             return new JSONArray(json);
-        } catch (IOException | JSONException ex) {
+        } catch (IOException | JSONException | NullPointerException ex) {
             ex.printStackTrace();
             return null;
         }
